@@ -1,6 +1,8 @@
 package com.devsuperior.dscommerce.entities;
 
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 import org.springframework.security.core.GrantedAuthority;
 
@@ -8,21 +10,27 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 
-@SuppressWarnings("serial")
 @Entity
 @Table(name = "tb_role")
-public class Role implements GrantedAuthority {
+public class Role implements GrantedAuthority{
 
+	private static final long serialVersionUID = 1829983526302554108L;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String authority;
-
+	
+	@ManyToMany(mappedBy = "roles")
+	private Set<User> users = new HashSet<>();
+	
 	public Role() {
+		// TODO Auto-generated constructor stub
 	}
-
+	
 	public Role(Long id, String authority) {
 		this.id = id;
 		this.authority = authority;
@@ -47,7 +55,7 @@ public class Role implements GrantedAuthority {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(authority);
+		return Objects.hash(id);
 	}
 
 	@Override
@@ -59,6 +67,7 @@ public class Role implements GrantedAuthority {
 		if (getClass() != obj.getClass())
 			return false;
 		Role other = (Role) obj;
-		return Objects.equals(authority, other.authority);
+		return Objects.equals(id, other.id);
 	}
+
 }
