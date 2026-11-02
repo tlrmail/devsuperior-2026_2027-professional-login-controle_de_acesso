@@ -123,6 +123,10 @@ public class User implements UserDetails{
 		}
 		return false;
 	}
+	
+	public Set<Role> getRoles(){
+		return this.roles;
+	}
     
     @Override
     public int hashCode() {
