@@ -28,7 +28,7 @@ public class OrderDTO {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public OrderDTO(Long id, Instant moment, OrderStatus status, ClientDTO clientDTO, PaymentDTO paymentDTO) {
+	public OrderDTO(Long id, Instant moment, OrderStatus status, ClientDTO clientDTO, PaymentDTO paymentDTO, String imgUrl) {
 		this.id = id;
 		this.moment = moment;
 		this.status = status;

@@ -127,7 +127,7 @@ public class User implements UserDetails{
 	public Set<Role> getRoles(){
 		return this.roles;
 	}
-    
+	
     @Override
     public int hashCode() {
         return id != null ? id.hashCode() : 0;
